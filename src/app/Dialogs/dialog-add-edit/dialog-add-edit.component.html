@@ -1,0 +1,59 @@
+<h1 mat-dialog-title>{{tituloAccion}} Registro</h1>
+<div mat-dialog-content>
+  <form [formGroup]="formRegistro">
+    <mat-grid-list cols="1" rowHeight="80px">
+      <!--Nombre-->
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" autocomplete="off" maxlength="20">
+        </mat-form-field>
+      </mat-grid-tile>
+      <!--Apellido-->
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Apellido</mat-label>
+          <input matInput formControlName="apellido" autocomplete="off" maxlength="20">
+        </mat-form-field>
+      </mat-grid-tile>
+      <!--Identificacion-->
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Identificación</mat-label>
+          <input matInput formControlName="identificacion" autocomplete="off" maxlength="10">
+        </mat-form-field>
+      </mat-grid-tile>
+      <!--Edad-->
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Edad</mat-label>
+          <input matInput formControlName="edad" autocomplete="off" maxlength="2">
+        </mat-form-field>
+      </mat-grid-tile>
+      <!--Casa-->
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Casa a la que desea Pertenecer</mat-label>
+          <mat-select formControlName="refCasa">
+            <mat-option *ngFor="let item of listaCasas" [value]="item.idCasa">
+              {{item.nombre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</div>
+
+
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+  <button mat-raised-button color="primary"
+  (click)="addEditRegistro()"
+  [disabled]="formRegistro.invalid"
+  >{{botonAccion}}
+</button>
+</div>
+
+<!--onkeydown="return /[a-zA-ZñÑá-úÁ-Ú]/i.test(event.key)"-->
+<!--(keypress)="validateFormat($event)"-->
